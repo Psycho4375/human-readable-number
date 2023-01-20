@@ -96,14 +96,14 @@ module.exports = function toReadable (number) {
             break;
         }
 
-        tens = toTens[Math.trunc((number % 100) / 10 - 2)];
-        ones = toTwelve[number % 10 - 1];
-        if (ones != undefined){
+        tens = toTens[Math.trunc((n % 100) / 10 - 2)];
+        ones = toTwelve[n % 10 - 1];
+        if (ones != undefined && tens != undefined){
         twoN = tens + ' ' + ones;
         return(hundredResult + ' ' + twoN);
-        }else if (tens = 0){
-        twoN = ones;
-        return(hundredResult + ' ' + twoN);
+        }else if (n % 100 < 20){
+        nTotwelve = toTwelve[Math.trunc(n % 10 - 1)];
+        return(hundredResult + ' ' + nTotwelve);
         }else{
         twoN = tens;
         return(hundredResult + ' ' + twoN);
